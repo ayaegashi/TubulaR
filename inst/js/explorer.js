@@ -168,6 +168,8 @@ function setup_prompts(summaries) {
         }
       });
       line_tippy.setContent(summary_obj.summary);
+      console.log(summary_obj);
+      console.log(summary_obj.summary);
       line.prompt = line_tippy;
     }
   }
@@ -381,6 +383,7 @@ function setup_callouts(callouts) {
 /*
 Help text linking
 */
+// AYANA
 
 // a helper function that will mark all of the function text as hyperlink
 // for each line in the code
@@ -400,6 +403,7 @@ function setup_fns_help(fns_help) {
       line_fns_help_nodes = line_fns_help_nodes.flat();
     }
     line.line_fns_help_nodes = line_fns_help_nodes;
+    console.log(line_fns_help_nodes);
   })
 }
 

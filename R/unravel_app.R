@@ -232,6 +232,7 @@ unravelUI <- function(id) {
     shiny::div(
       css_dependencies(),
       id = "code_explorer_container",
+      # AYANA.. open help page?
       # since the tabsetPanel below renders before the code overlay, this is a hack
       # that 'hides' the tabbed output by simply shifting the content way below
       # so the user is unaware it even existed; when the html for code_explorer loads
@@ -436,6 +437,7 @@ unravelServer <- function(id, user_code = NULL) {
         # message("JS is ready for callouts: ", input$need_callouts)
         session$sendCustomMessage("callouts", rv$callouts)
         session$sendCustomMessage("fns_help", rv$fns_help)
+        print(rv$callouts)
       })
 
       # list for a trigger message input from JS input so we can send summary info for data prompts
@@ -598,6 +600,8 @@ unravelServer <- function(id, user_code = NULL) {
       # invoke the help menu for a particular function
       observeEvent(input$fn_help, {
         fn <- input$fn_help
+        print(input$fn_help)
+        console.log(input$fn_help)
         # get the namespaces for the function
         fn_ns <- getAnywhere(fn)$where
         # since tidylog/Unravel gets loaded as part of this package,
@@ -615,7 +619,8 @@ unravelServer <- function(id, user_code = NULL) {
           log_help(
             paste0("Open help for ", paste0(rv$cur_fns_help$fn, ":", rv$cur_fns_help$pkg))
           )
-          help(rv$cur_fns_help$fn, rv$cur_fns_help$pkg)
+          print(rv$cur_fns_help)
+          help(rv$cur_fns_help$fn, rv$cur_fns_help$pkg) # AYANA: calling help() function!!
         }
       })
 

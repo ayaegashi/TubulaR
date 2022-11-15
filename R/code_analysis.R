@@ -191,6 +191,8 @@ gather_fns_help <- function(fns_help, deparsed) {
   # if there were any function calls from the parse tree info, then let's
   # construct a function list so we can use it to hyperlink functions on JS side
   if (nrow(filtered_fns_help) > 0) {
+    print("in gather function")
+    print(filtered_fns_help)
     return(
       list(
         lapply(
@@ -252,6 +254,7 @@ get_output_intermediates <- function(pipeline) {
 
   # check if only a name has been passed for full expression which is
   # potentially a dataframe
+  # AYANA
   if (inherits(pipeline, "name") && is.data.frame(eval(pipeline))) {
     output <- eval(pipeline)
     return(list(
@@ -332,6 +335,23 @@ get_output_intermediates <- function(pipeline) {
       verb <- lines[[i]]
       verb_name <- ""
     }
+    print(verb_name);
+
+    # AYANA
+    summary_df <- data.frame(
+      v_name = c("group_by", "summarise"),
+      v_summary = c("Use <strong>group_by(.data, …, .add = FALSE, .drop = TRUE)</strong> to create a \"grouped\" 
+                    copy of a table grouped by columns in ... dplyr functions will manipulate 
+                    each \"group\" separately and combine the results.", 
+                    "<strong>summarise(.data, …)</strong> Compute table of summaries.")
+    )
+
+    related_v_df <- data.frame(
+      v_name = c("group_by", "summarise"),
+      related = c("<a id=\"summarise\" class=\"fn_help\">summarise</a>, summarise, arrange", 
+                  "slice_head, slice_min, add_row")
+    )
+
 
     # get the deparsed character version
     # NOTE: rlang::expr_deparse breaks apart long strings into multiple character vector
@@ -409,7 +429,17 @@ get_output_intermediates <- function(pipeline) {
         if (!has_pipes && first_arg_data) {
           change_type <- get_change_type(verb_name)
         }
-        verb_summary <- get_verb_summary()
+        if (verb_name != "") {
+          v_sum <- summary_df[summary_df$v_name == verb_name,]$v_summary
+          v_related <-related_v_df[related_v_df$v_name == verb_name,]$related
+          verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
+                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br>", 
+                                v_related, sep="")
+
+        } else {
+          verb_summary <- get_verb_summary()
+        }
+        
         if(is.na(intermediate["output"])) {
           change_type <- "error"
           verb_summary <- "This step produced an `NA`."
