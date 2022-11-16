@@ -346,10 +346,17 @@ get_output_intermediates <- function(pipeline) {
                     "<strong>summarise(.data, …)</strong> Compute table of summaries.")
     )
 
-    related_v_df <- data.frame(
-      v_name = c("group_by", "summarise"),
-      related = c("<a id=\"summarise\" class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/group_by.html'>summarise</a>, summarise, arrange", 
-                  "slice_head, slice_min, add_row")
+    related_v1_df <- data.frame(
+      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+      related = c("group_map", "arrange", "arrange", "arrange", "arrange", "filter", "arrange")
+    )
+    related_v2_df <- data.frame(
+      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+      related = c("group_nest", "filter", "filter", "mutate", "filter", "mutate", "filter")
+    )
+    related_v3_df <- data.frame(
+      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+      related = c("group_split", "mutate", "rename", "rename", "mutate", "rename", "mutate")
     )
 
 
@@ -429,12 +436,26 @@ get_output_intermediates <- function(pipeline) {
         if (!has_pipes && first_arg_data) {
           change_type <- get_change_type(verb_name)
         }
-        if (verb_name != "") {
+        if (verb_name != "" && any(summary_df$v_name == verb_name)) {
           v_sum <- summary_df[summary_df$v_name == verb_name,]$v_summary
-          v_related <-related_v_df[related_v_df$v_name == verb_name,]$related
-          verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
-                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br>", 
-                                v_related, sep="")
+
+          if (!any(related_v1_df$v_name == verb_name)) {
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
+                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br><br>",
+                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
+          } else {
+            v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
+            v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
+            v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
+                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br><br><strong>Related Verbs:</strong><br>",
+                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+                                v_related1, ".html'>", v_related1, ", </a>",
+                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+                                v_related2, ".html'>", v_related2, ", </a>",
+                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+                                v_related3, ".html'>", v_related3, "</a>", sep="")
+          }
 
         } else {
           verb_summary <- get_verb_summary()

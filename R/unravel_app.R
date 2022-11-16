@@ -600,8 +600,6 @@ unravelServer <- function(id, user_code = NULL) {
       # invoke the help menu for a particular function
       observeEvent(input$fn_help, {
         fn <- input$fn_help
-        print(input$fn_help)
-        console.log(input$fn_help)
         # get the namespaces for the function
         fn_ns <- getAnywhere(fn)$where
         # since tidylog/Unravel gets loaded as part of this package,

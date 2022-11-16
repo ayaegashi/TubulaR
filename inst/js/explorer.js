@@ -168,8 +168,6 @@ function setup_prompts(summaries) {
         }
       });
       line_tippy.setContent(summary_obj.summary);
-      console.log(summary_obj);
-      console.log(summary_obj.summary);
       line.prompt = line_tippy;
     }
   }
@@ -403,7 +401,6 @@ function setup_fns_help(fns_help) {
       line_fns_help_nodes = line_fns_help_nodes.flat();
     }
     line.line_fns_help_nodes = line_fns_help_nodes;
-    console.log(line_fns_help_nodes);
   })
 }
 
