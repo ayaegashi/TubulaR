@@ -467,9 +467,9 @@ get_output_intermediates <- function(pipeline) {
             verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
                                 v_sum, "<br>", img_related, "<br><strong>Related Verbs:</strong><br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
-                                v_related1, ".html'>", v_related1, ", </a>",
+                                v_related1, ".html'>", v_related1, "</a>, ",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
-                                v_related2, ".html'>", v_related2, ", </a>",
+                                v_related2, ".html'>", v_related2, "</a>, ",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
                                 v_related3, ".html'>", v_related3, "</a>", sep="")
           }
