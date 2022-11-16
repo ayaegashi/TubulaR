@@ -340,9 +340,9 @@ get_output_intermediates <- function(pipeline) {
     # AYANA
     summary_df <- data.frame(
       v_name = c("group_by", "summarise"),
-      v_summary = c("Use <strong>group_by(.data, …, .add = FALSE, .drop = TRUE)</strong> to create a \"grouped\" 
-                    copy of a table grouped by columns in ... dplyr functions will manipulate 
-                    each \"group\" separately and combine the results.", 
+      v_summary = c("Use <strong>group_by(.data, …, .add = FALSE, .drop = TRUE)</strong> to create a \"grouped\"
+                    copy of a table grouped by columns in ... dplyr functions will manipulate
+                    each \"group\" separately and combine the results.",
                     "<strong>summarise(.data, …)</strong> Compute table of summaries.")
     )
 
@@ -358,6 +358,20 @@ get_output_intermediates <- function(pipeline) {
       v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
       related = c("group_split", "mutate", "rename", "rename", "mutate", "rename", "mutate")
     )
+
+
+    images_df <- data.frame(
+      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+      links = c("<img src='https://64.media.tumblr.com/a426fa66cba85273f2be36cd0b434237/2f29cfdff0960fa0-13/s2048x3072/3cc01cd3c317723f45a5c96d3a18b8b3c19461ff.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                  "<img src='https://64.media.tumblr.com/099a066ebb484d630672785b5f26c9ee/2f29cfdff0960fa0-58/s2048x3072/57b9eabe9610935f1460445189cd2afefc98f002.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                "<img src='https://64.media.tumblr.com/403ca2c0ec7e216dec0dd85806f05d42/2f29cfdff0960fa0-27/s2048x3072/ee63f0cd2996d50f8e1df05163533ec75a8373b0.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                "<img src='https://64.media.tumblr.com/a1aa600a238bee700b7e215f139072a0/2f29cfdff0960fa0-f9/s2048x3072/f371004a66c14edcb9887eb7fbbda72d9eb26778.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                "<img src='https://64.media.tumblr.com/b91b580347ea22306813d24b22054956/2f29cfdff0960fa0-f8/s2048x3072/5be28875faea4d053658b231aae2e22caa9ffeb0.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                "<img src='https://64.media.tumblr.com/0197c817bd23a303fd569807487d69f1/2f29cfdff0960fa0-de/s2048x3072/ad98ae5a16d1b15dafad77230cc449197eec5d91.pnj' alt='No visual summary available for this function :(', width='325'><br>",
+                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width='325'><br>")
+    )
+
+    # "<img src='placeholder' alt='No visual summary available for this function :('><br>",
 
 
     # get the deparsed character version
@@ -440,15 +454,18 @@ get_output_intermediates <- function(pipeline) {
           v_sum <- summary_df[summary_df$v_name == verb_name,]$v_summary
 
           if (!any(related_v1_df$v_name == verb_name)) {
-            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
-                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br><br>",
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
+                                v_sum, "<br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
           } else {
             v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
             v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
             v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
-            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", 
-                                v_sum, "<br>", "<img src='www/group_by.png' alt='Group By Image'><br><br><strong>Related Verbs:</strong><br>",
+
+            img_related <- images_df[images_df$v_name == verb_name,]$links
+
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
+                                v_sum, "<br>", img_related, "<br><strong>Related Verbs:</strong><br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
                                 v_related1, ".html'>", v_related1, ", </a>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
@@ -460,7 +477,7 @@ get_output_intermediates <- function(pipeline) {
         } else {
           verb_summary <- get_verb_summary()
         }
-        
+
         if(is.na(intermediate["output"])) {
           change_type <- "error"
           verb_summary <- "This step produced an `NA`."
