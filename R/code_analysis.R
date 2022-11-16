@@ -348,7 +348,7 @@ get_output_intermediates <- function(pipeline) {
 
     related_v_df <- data.frame(
       v_name = c("group_by", "summarise"),
-      related = c("<a id=\"summarise\" class=\"fn_help\">summarise</a>, summarise, arrange", 
+      related = c("<a id=\"summarise\" class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/group_by.html'>summarise</a>, summarise, arrange", 
                   "slice_head, slice_min, add_row")
     )
 
