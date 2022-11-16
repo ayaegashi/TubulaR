@@ -254,6 +254,12 @@ unravelUI <- function(id) {
           style = "width: 100%; height: 1200px; margin: 10px;",
           reactable::reactableOutput(ns("data_details"))
         )
+      ),
+      shiny::tabPanel("Help",
+        shiny::div(
+          style = "width: 100%; height: 1200px; margin: 10px;",
+          shiny::htmlOutput(ns("picture"))
+        )
       )
     )
   )
@@ -428,6 +434,14 @@ unravelServer <- function(id, user_code = NULL) {
           shiny::outputOptions(output, "fn_help_dummy", suspendWhenHidden = FALSE, priority = 10)
           code_explorer_ui(rv$code_info, id)
         }
+      })
+
+      output$picture <- renderText({
+        c(
+          '<img src="',
+          "https://64.media.tumblr.com/8b8fe0222a392a39bfe4f0ea4ba0fe80/f3f9e94eb528e89a-63/s1280x1920/0f19ec42de599801507a815005bc51ce5ed064a5.pnj",
+          '" width=100%>'
+        )
       })
 
       # list for a trigger message input from JS input so we can send callout info for each line

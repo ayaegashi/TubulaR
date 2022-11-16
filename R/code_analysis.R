@@ -362,13 +362,13 @@ get_output_intermediates <- function(pipeline) {
 
     images_df <- data.frame(
       v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
-      links = c("<img src='https://64.media.tumblr.com/a426fa66cba85273f2be36cd0b434237/2f29cfdff0960fa0-13/s2048x3072/3cc01cd3c317723f45a5c96d3a18b8b3c19461ff.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                  "<img src='https://64.media.tumblr.com/099a066ebb484d630672785b5f26c9ee/2f29cfdff0960fa0-58/s2048x3072/57b9eabe9610935f1460445189cd2afefc98f002.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                "<img src='https://64.media.tumblr.com/403ca2c0ec7e216dec0dd85806f05d42/2f29cfdff0960fa0-27/s2048x3072/ee63f0cd2996d50f8e1df05163533ec75a8373b0.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                "<img src='https://64.media.tumblr.com/a1aa600a238bee700b7e215f139072a0/2f29cfdff0960fa0-f9/s2048x3072/f371004a66c14edcb9887eb7fbbda72d9eb26778.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                "<img src='https://64.media.tumblr.com/b91b580347ea22306813d24b22054956/2f29cfdff0960fa0-f8/s2048x3072/5be28875faea4d053658b231aae2e22caa9ffeb0.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                "<img src='https://64.media.tumblr.com/0197c817bd23a303fd569807487d69f1/2f29cfdff0960fa0-de/s2048x3072/ad98ae5a16d1b15dafad77230cc449197eec5d91.pnj' alt='No visual summary available for this function :(', width='325'><br>",
-                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width='325'><br>")
+      links = c("<img src='https://64.media.tumblr.com/a426fa66cba85273f2be36cd0b434237/2f29cfdff0960fa0-13/s2048x3072/3cc01cd3c317723f45a5c96d3a18b8b3c19461ff.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                  "<img src='https://64.media.tumblr.com/099a066ebb484d630672785b5f26c9ee/2f29cfdff0960fa0-58/s2048x3072/57b9eabe9610935f1460445189cd2afefc98f002.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/403ca2c0ec7e216dec0dd85806f05d42/2f29cfdff0960fa0-27/s2048x3072/ee63f0cd2996d50f8e1df05163533ec75a8373b0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/a1aa600a238bee700b7e215f139072a0/2f29cfdff0960fa0-f9/s2048x3072/f371004a66c14edcb9887eb7fbbda72d9eb26778.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/b91b580347ea22306813d24b22054956/2f29cfdff0960fa0-f8/s2048x3072/5be28875faea4d053658b231aae2e22caa9ffeb0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/0197c817bd23a303fd569807487d69f1/2f29cfdff0960fa0-de/s2048x3072/ad98ae5a16d1b15dafad77230cc449197eec5d91.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width=100%><br>")
     )
 
     # "<img src='placeholder' alt='No visual summary available for this function :('><br>",
