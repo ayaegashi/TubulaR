@@ -456,6 +456,7 @@ get_output_intermediates <- function(pipeline) {
             verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
           } else {
+            # AYANA: deprecated
             # v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
             # v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
             # v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
@@ -466,7 +467,7 @@ get_output_intermediates <- function(pipeline) {
 
             verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", img_related, html, sep="")
 
-            # AYANA: can delete but keeping for now
+            # AYANA: deprecated, can delete but keeping for now
             # verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
             #                     img_related, "<br><strong>Related Verbs:</strong><br>",
             #                     "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
