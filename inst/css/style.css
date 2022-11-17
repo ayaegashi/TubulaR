@@ -295,6 +295,10 @@ h2 {
   font-family: Tahoma;
 }
 
+.useless {
+  font-family: Arial;
+}
+
 /* Change css styles */
 
 .internal-change {
