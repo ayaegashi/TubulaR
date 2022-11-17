@@ -333,29 +333,28 @@ get_output_intermediates <- function(pipeline) {
       verb <- lines[[i]]
       verb_name <- ""
     }
-    # print(verb_name);
 
-    # AYANA
-    summary_df <- data.frame(
-      v_name = c("group_by", "summarise"),
-      v_summary = c("Use <strong>group_by(.data, …, .add = FALSE, .drop = TRUE)</strong> to create a \"grouped\"
-                    copy of a table grouped by columns in ... dplyr functions will manipulate
-                    each \"group\" separately and combine the results.",
-                    "<strong>summarise(.data, …)</strong> Compute table of summaries.")
-    )
-
-    related_v1_df <- data.frame(
-      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
-      related = c("group_map", "arrange", "arrange", "arrange", "arrange", "filter", "arrange")
-    )
-    related_v2_df <- data.frame(
-      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
-      related = c("group_nest", "filter", "filter", "mutate", "filter", "mutate", "filter")
-    )
-    related_v3_df <- data.frame(
-      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
-      related = c("group_split", "mutate", "rename", "rename", "mutate", "rename", "mutate")
-    )
+    # AYANA: all of these dataframes can be depricated probably, but just commenting out for now
+    # summary_df <- data.frame(
+    #   v_name = c("group_by", "summarise"),
+    #   v_summary = c("Use <strong>group_by(.data, …, .add = FALSE, .drop = TRUE)</strong> to create a \"grouped\"
+    #                 copy of a table grouped by columns in ... dplyr functions will manipulate
+    #                 each \"group\" separately and combine the results.",
+    #                 "<strong>summarise(.data, …)</strong> Compute table of summaries.")
+    # )
+    
+    # related_v1_df <- data.frame(
+    #   v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+    #   related = c("group_map", "arrange", "arrange", "arrange", "arrange", "filter", "arrange")
+    # )
+    # related_v2_df <- data.frame(
+    #   v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+    #   related = c("group_nest", "filter", "filter", "mutate", "filter", "mutate", "filter")
+    # )
+    # related_v3_df <- data.frame(
+    #   v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
+    #   related = c("group_split", "mutate", "rename", "rename", "mutate", "rename", "mutate")
+    # )
 
 
     images_df <- data.frame(
@@ -453,16 +452,15 @@ get_output_intermediates <- function(pipeline) {
           change_type <- get_change_type(verb_name)
         }
         if (verb_name != "") {
-          if (!any(related_v1_df$v_name == verb_name)) {
+          if (!any(related_df$verb == verb_name)) {
             verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
           } else {
-            v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
-            v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
-            v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
+            # v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
+            # v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
+            # v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
 
             html <- related_df[related_df$verb == verb_name,]$html
-            print(html)
 
             img_related <- images_df[images_df$v_name == verb_name,]$links
 
