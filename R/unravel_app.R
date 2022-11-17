@@ -451,7 +451,7 @@ unravelServer <- function(id, user_code = NULL) {
         # message("JS is ready for callouts: ", input$need_callouts)
         session$sendCustomMessage("callouts", rv$callouts)
         session$sendCustomMessage("fns_help", rv$fns_help)
-        print(rv$callouts)
+        # print(rv$callouts)
       })
 
       # list for a trigger message input from JS input so we can send summary info for data prompts
@@ -631,7 +631,7 @@ unravelServer <- function(id, user_code = NULL) {
           log_help(
             paste0("Open help for ", paste0(rv$cur_fns_help$fn, ":", rv$cur_fns_help$pkg))
           )
-          print(rv$cur_fns_help)
+          # print(rv$cur_fns_help)
           help(rv$cur_fns_help$fn, rv$cur_fns_help$pkg) # AYANA: calling help() function!!
         }
       })

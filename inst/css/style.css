@@ -273,10 +273,11 @@ h2 {
 }
 
 /* tippy */
-
+/* testing this out AYANA */
 .tippy-box {
   border-radius: 1.5rem;
   margin: 1em;
+  min-width: 400px;
 }
 
 .tippy-content {
@@ -389,6 +390,11 @@ input:checked + .slider:before {
 .fn_help {
   color: #375f84;
   cursor: help;
+}
+
+.error_link {
+  margin-left: 0px;
+  display: inline-block;
 }
 
 /* reactable */

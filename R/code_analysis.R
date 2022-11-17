@@ -191,8 +191,6 @@ gather_fns_help <- function(fns_help, deparsed) {
   # if there were any function calls from the parse tree info, then let's
   # construct a function list so we can use it to hyperlink functions on JS side
   if (nrow(filtered_fns_help) > 0) {
-    print("in gather function")
-    print(filtered_fns_help)
     return(
       list(
         lapply(
@@ -335,7 +333,7 @@ get_output_intermediates <- function(pipeline) {
       verb <- lines[[i]]
       verb_name <- ""
     }
-    print(verb_name);
+    # print(verb_name);
 
     # AYANA
     summary_df <- data.frame(
@@ -361,18 +359,22 @@ get_output_intermediates <- function(pipeline) {
 
 
     images_df <- data.frame(
-      v_name = c("group_by", "summarise", "mutate", "filter", "rename", "arrange", "select"),
-      links = c("<img src='https://64.media.tumblr.com/a426fa66cba85273f2be36cd0b434237/2f29cfdff0960fa0-13/s2048x3072/3cc01cd3c317723f45a5c96d3a18b8b3c19461ff.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                  "<img src='https://64.media.tumblr.com/099a066ebb484d630672785b5f26c9ee/2f29cfdff0960fa0-58/s2048x3072/57b9eabe9610935f1460445189cd2afefc98f002.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/403ca2c0ec7e216dec0dd85806f05d42/2f29cfdff0960fa0-27/s2048x3072/ee63f0cd2996d50f8e1df05163533ec75a8373b0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/a1aa600a238bee700b7e215f139072a0/2f29cfdff0960fa0-f9/s2048x3072/f371004a66c14edcb9887eb7fbbda72d9eb26778.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/b91b580347ea22306813d24b22054956/2f29cfdff0960fa0-f8/s2048x3072/5be28875faea4d053658b231aae2e22caa9ffeb0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/0197c817bd23a303fd569807487d69f1/2f29cfdff0960fa0-de/s2048x3072/ad98ae5a16d1b15dafad77230cc449197eec5d91.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width=100%><br>")
+      v_name = c("summarise", "select", "mutate", "rename", "add_row", "arrange", "filter", "group_by"),
+      links = c("<img src='https://64.media.tumblr.com/69fb544449401e29286709a951499afd/ea825d9d9c2f399b-10/s1280x1920/20cfe00ec4bfc5737c0626283403c7f8a6160fca.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/ae0d444683ec5a910f484e019ca011d8/ea825d9d9c2f399b-12/s1280x1920/421297ce36e2f8f5bc9c5aba7f7f963223d5bbb3.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/edfede85482b78e824032c2cfb8f1e95/ea825d9d9c2f399b-8b/s1280x1920/9b64a0e1a3f549f2c12b435085d07e947485a521.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/d5d9ad830fb9e0060aa25ce19d435c48/ea825d9d9c2f399b-9e/s1280x1920/b41e8a2b53f530e9fc73e1c3a4f73eb7685b771f.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/e6d733852c9fa90901de638ecfcf339b/ea825d9d9c2f399b-fe/s1280x1920/6e939a682bd46eff224b78099182dabd64b4d2a0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/efa8c1bf0070110b46c9571e079c1c7a/ea825d9d9c2f399b-c7/s1280x1920/bfd41b648ae646fc6b55f7b5f132795684fac4d4.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/4ac588467a9cc5162274ccdbdcef0f3b/ea825d9d9c2f399b-22/s1280x1920/7dcf04098983e92e596eb210915e8cced5e51693.pnj' alt='No visual summary available for this function :(', width=100%><br>")
     )
 
-    # "<img src='placeholder' alt='No visual summary available for this function :('><br>",
+    errorhelp_df <- read.csv("scraper/scraper_results.csv", header = TRUE, sep = ',', quote = '”', dec = '.', fill = TRUE, comment.char = '')
+    colnames(errorhelp_df) <- c("idx","verb_name", "result1", "result2","result3","link1","link2","link3")
 
+    related_df <- read.csv("simil_func/similar_v_scrape_edit.csv", header = TRUE, sep = ';', quote = '”', dec = '.', fill = TRUE, comment.char = '')
+    colnames(related_df) <- c("idx", "verb", "html")
 
     # get the deparsed character version
     # NOTE: rlang::expr_deparse breaks apart long strings into multiple character vector
@@ -450,28 +452,31 @@ get_output_intermediates <- function(pipeline) {
         if (!has_pipes && first_arg_data) {
           change_type <- get_change_type(verb_name)
         }
-        if (verb_name != "" && any(summary_df$v_name == verb_name)) {
-          v_sum <- summary_df[summary_df$v_name == verb_name,]$v_summary
-
+        if (verb_name != "") {
           if (!any(related_v1_df$v_name == verb_name)) {
             verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
-                                v_sum, "<br>",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
           } else {
             v_related1 <-related_v1_df[related_v1_df$v_name == verb_name,]$related
             v_related2 <-related_v2_df[related_v2_df$v_name == verb_name,]$related
             v_related3 <-related_v3_df[related_v3_df$v_name == verb_name,]$related
 
+            html <- related_df[related_df$verb == verb_name,]$html
+            print(html)
+
             img_related <- images_df[images_df$v_name == verb_name,]$links
 
-            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
-                                v_sum, "<br>", img_related, "<br><strong>Related Verbs:</strong><br>",
-                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
-                                v_related1, ".html'>", v_related1, "</a>, ",
-                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
-                                v_related2, ".html'>", v_related2, "</a>, ",
-                                "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
-                                v_related3, ".html'>", v_related3, "</a>", sep="")
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", img_related, html, sep="")
+
+            # AYANA: can delete but keeping for now
+            # verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
+            #                     img_related, "<br><strong>Related Verbs:</strong><br>",
+            #                     "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+            #                     v_related1, ".html'>", v_related1, "</a>, ",
+            #                     "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+            #                     v_related2, ".html'>", v_related2, "</a>, ",
+            #                     "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/",
+            #                     v_related3, ".html'>", v_related3, "</a>", sep="")
           }
 
         } else {
@@ -543,7 +548,24 @@ get_output_intermediates <- function(pipeline) {
       msg <- gsub("\nx", "<br><span style='color:red'>x</span>", msg)
       msg <- gsub("\n\u2139", "<br><span style='color:DodgerBlue'>\u2139</span>", msg)
       msg <- gsub("\n\\*", "<br>*", msg)
+
+      # AYANA: Add stack overflow links to error messages if we've scraped
+      if (verb_name != "" && any(errorhelp_df$verb_name == verb_name)) {
+        res1 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$result1
+        res2 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$result2
+        res3 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$result3
+        link1 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$link1
+        link2 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$link2
+        link3 = errorhelp_df[errorhelp_df$verb_name == verb_name,]$link3
+        msg <- paste(msg, "<br><br><strong>Help related to: </strong><code class='code'>", 
+                    verb_name, "</code><br>1. <a class=\"fn_help\" href='",
+                    link1, "'>", res1, "</a><br>2. <a class=\"fn_help\" href='",
+                    link2, "'>", res2, "</a><br>3. <a class=\"fn_help\" href='",
+                    link3, "'>", res3, "</a>", sep="")
+      }
+
       intermediate[["err"]] <- msg
+      
       # even though we have an error, include function hyperlinks so user can
       # invesitage how the functions within the expression of the line work
       intermediate["fns_help"] <- gather_fns_help(list(), deparsed)
