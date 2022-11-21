@@ -369,11 +369,15 @@ get_output_intermediates <- function(pipeline) {
                 "<img src='https://64.media.tumblr.com/4ac588467a9cc5162274ccdbdcef0f3b/ea825d9d9c2f399b-22/s1280x1920/7dcf04098983e92e596eb210915e8cced5e51693.pnj' alt='No visual summary available for this function :(', width=100%><br>")
     )
 
-    errorhelp_df <- read.csv("scraper/scraper_results.csv", header = TRUE, sep = ',', quote = '”', dec = '.', fill = TRUE, comment.char = '')
+    errorhelp_df <- read.csv("scraper/scraper_results.csv", header = TRUE, sep = ',', quote = '"', dec = '.', fill = TRUE, comment.char = '')
     colnames(errorhelp_df) <- c("idx","verb_name", "result1", "result2","result3","link1","link2","link3")
 
-    related_df <- read.csv("simil_func/similar_v_scrape_edit.csv", header = TRUE, sep = ';', quote = '”', dec = '.', fill = TRUE, comment.char = '')
+    related_df <- read.csv("simil_func/similar_v_scrape_edit_NEW.csv", header = TRUE, sep = ';', quote = '"', dec = '.', fill = TRUE, comment.char = '')
     colnames(related_df) <- c("idx", "verb", "html")
+
+    desc_df <- read.csv("simil_func/backup_descriptions.csv", header = TRUE, sep = ';', quote = '"', dec = '.', fill = TRUE, comment.char = '')
+    
+    colnames(desc_df) <- c("idx", "verb", "desc")
 
     # get the deparsed character version
     # NOTE: rlang::expr_deparse breaks apart long strings into multiple character vector
@@ -453,7 +457,7 @@ get_output_intermediates <- function(pipeline) {
         }
         if (verb_name != "") {
           if (!any(related_df$verb == verb_name)) {
-            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>This is not a standard dplyr function. Use the following source for help: ",
                                 "<a class=\"fn_help\" href='https://dplyr.tidyverse.org/reference/'>Function Reference</a>", sep="")
           } else {
             # AYANA: deprecated
@@ -463,9 +467,18 @@ get_output_intermediates <- function(pipeline) {
 
             html <- related_df[related_df$verb == verb_name,]$html
 
-            img_related <- images_df[images_df$v_name == verb_name,]$links
+            if (is.element(verb_name,images_df$v_name)) {
 
-            verb_summary <- paste("<code class='code'>", verb_name, "</code><br>", img_related, html, sep="")
+              img_related <- images_df[images_df$v_name == verb_name,]$links
+
+            } else {
+              
+              img_related <- paste("<strong>Description: </strong>", desc_df[desc_df$verb == verb_name,]$desc, "<br>")
+            }
+
+            
+
+            verb_summary <- paste("<code class='code'>", verb_name, "</code><br><br>", img_related, html, sep="")
 
             # AYANA: deprecated, can delete but keeping for now
             # verb_summary <- paste("<code class='code'>", verb_name, "</code><br>",
