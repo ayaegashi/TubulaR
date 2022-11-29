@@ -364,8 +364,8 @@ get_output_intermediates <- function(pipeline) {
                 "<img src='https://64.media.tumblr.com/edfede85482b78e824032c2cfb8f1e95/ea825d9d9c2f399b-8b/s1280x1920/9b64a0e1a3f549f2c12b435085d07e947485a521.pnj' alt='No visual summary available for this function :(', width=100%><br>",
                 "<img src='https://64.media.tumblr.com/d5d9ad830fb9e0060aa25ce19d435c48/ea825d9d9c2f399b-9e/s1280x1920/b41e8a2b53f530e9fc73e1c3a4f73eb7685b771f.pnj' alt='No visual summary available for this function :(', width=100%><br>",
                 "<img src='https://64.media.tumblr.com/e6d733852c9fa90901de638ecfcf339b/ea825d9d9c2f399b-fe/s1280x1920/6e939a682bd46eff224b78099182dabd64b4d2a0.pnj' alt='No visual summary available for this function :(', width=100%><br>",
+                "<img src='https://64.media.tumblr.com/76098cd20c96df5d8a02fcabb5e03fc3/ea825d9d9c2f399b-06/s1280x1920/de1f199119ee87a51db239e544fd4499d553f545.pnj' alt='No visual summary available for this function :(', width=100%><br>",
                 "<img src='https://64.media.tumblr.com/efa8c1bf0070110b46c9571e079c1c7a/ea825d9d9c2f399b-c7/s1280x1920/bfd41b648ae646fc6b55f7b5f132795684fac4d4.pnj' alt='No visual summary available for this function :(', width=100%><br>",
-                "<img src='https://64.media.tumblr.com/ab6afbc0679f75434c3a70cc7f5b5654/2f29cfdff0960fa0-dc/s2048x3072/c21806074fab0c4c9cfe5f26743dc8aa8f0df151.pnj' alt='No visual summary available for this function :(', width=100%><br>",
                 "<img src='https://64.media.tumblr.com/4ac588467a9cc5162274ccdbdcef0f3b/ea825d9d9c2f399b-22/s1280x1920/7dcf04098983e92e596eb210915e8cced5e51693.pnj' alt='No visual summary available for this function :(', width=100%><br>")
     )
 
