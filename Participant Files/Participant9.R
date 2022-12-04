@@ -6,7 +6,10 @@ library(tidyverse)
 # Warmup: Please use piping in order to find the number of cars in the
 # mtcars dataset with horsepower of over 100.
 
-mtcars %>% filter(hp > 100) %>% count(hp)
+mtcars %>% mutate(big_hp = between(hp,100,1000000000)) %>% summarise(count = sum(big_hp))
+
+mtcars %>% filter(hp > 100) %>% count()
+
 
 # Question 1: What is the average (mean) Wind speed in the dataset?
 
