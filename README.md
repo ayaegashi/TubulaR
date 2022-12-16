@@ -1,4 +1,4 @@
-# Unravel: A fluent code explorer for R. <img src="man/figures/logo.png" align="right" alt="" width="120"/>
+# TubulaR: An augmented version of Unravel for novice learners of piping in R. <img src="man/figures/logo.png" align="right" alt="" width="120"/>
 
 > Unravel, inspect, and explore fluent code in R.
 
