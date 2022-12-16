@@ -1,6 +1,6 @@
 # TubulaR: An augmented version of Unravel for novice learners of piping in R.
 
-## Project by Ayana Yaegashi and RunLin Wang
+## Project by RunLin Wang and Ayana Yaegashi
 
 Unravel is an R addin introduced at UIST '21 by Nischal Shrestha, Titus Barik, and Chris Parnin. Unravel helped data scientists understand fluent programming (function composition via pipes) through a visual interface. The original Unravel [paper](http://nischalshrestha.me/docs/unravel.pdf) can be found here, and its corresponding GitHub repository is here: https://github.com/nischalshrestha/Unravel. Most of this project's code is based heavily off of Unravel.
 
